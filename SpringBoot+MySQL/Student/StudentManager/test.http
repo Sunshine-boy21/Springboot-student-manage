@@ -1,0 +1,45 @@
+POST http://localhost:8080/user/login
+Content-Type: application/x-www-form-urlencoded
+
+username=admin&password=123456
+
+### 查询全部学生列表
+GET http://localhost:8080/student/list
+Accept: application/json
+
+### 新增学生 POST + JSON @RequestBody
+POST http://localhost:8080/student/add
+Content-Type: application/json
+
+{
+  "name": "张三",
+  "age": 20,
+  "gender": "男",
+  "classId": 1,
+  "stuNo": "2026001"
+}
+
+
+
+### 根据id查询学生
+### 根据id查询学生（路径变量写法）
+GET http://localhost:8080/student/1
+Accept: application/json
+
+
+### 修改学生信息 PUT + JSON
+PUT http://localhost:8080/student
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "张三三",
+  "age": 21,
+  "gender": "男",
+  "classId": 1
+}
+
+
+### 删除学生
+GET http://localhost:8080/student/delete?id=1
+Accept: application/json
