@@ -1,0 +1,21 @@
+-- 创建数据库
+CREATE DATABASE IF NOT EXISTS student_db DEFAULT CHARACTER SET utf8mb4;
+USE student_db;
+
+-- 班级表
+CREATE TABLE class (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '班级id',
+    class_name VARCHAR(50) NOT NULL COMMENT '班级名称',
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 学生表
+CREATE TABLE student (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '学生id',
+    student_name VARCHAR(30) NOT NULL COMMENT '学生姓名',
+    age INT COMMENT '年龄',
+    gender VARCHAR(10) COMMENT '性别',
+    class_id BIGINT COMMENT '所属班级id',
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (class_id) REFERENCES class(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
