@@ -1,0 +1,6 @@
+ 引入 spring-boot-starter-cache 依赖，开启 @Cacheable、@CacheEvict 缓存注解
+ 启动类添加 @EnableCaching 开启缓存支持
+ RedisConfig 新增 RedisCacheManager，配置缓存序列化、TTL5分钟、禁止缓存null值，防止缓存穿透
+ StudentService 新增 getStudentById / updateStudent / deleteStudent 接口
+ StudentServiceImpl 使用 @Cacheable 对学生详情查询做Redis缓存；@CacheEvict 在更新、删除时失效对应缓存，保证MySQL与缓存数据一致性
+ 保留原有RedisTemplate与RedisUtil工具类，可手动操作Redis
